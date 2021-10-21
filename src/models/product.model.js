@@ -31,7 +31,11 @@ const schema = new Schema({
     ref: 'Category'
   },
   tags: [{ type: String }],
-  quantity: Number
+  quantity: Number,
+  created_at: {
+    type: Date,
+    default: Date.now
+  }
 })
 
 module.exports = {
