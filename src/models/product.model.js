@@ -33,3 +33,7 @@ const schema = new Schema({
   tags: [{ type: String }],
   quantity: Number
 })
+
+module.exports = {
+  ProductModel: model('Product', schema)
+}
