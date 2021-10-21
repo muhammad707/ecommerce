@@ -1,5 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 const { isEmail } = require('validator');
+const bcrypt = require('bcryptjs');
 
 const schema = new Schema({
   username: {
@@ -34,6 +35,17 @@ const schema = new Schema({
     region: String,
   }]
 });
+
+schema.pre('save', async function save(next) {
+  if (!this.isModified('password')) return next();
+  try {
+    const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS);
+    this.password = await bcrypt.hash(this.password, salt);
+    return next();
+  } catch (error) {
+    return next(error);
+  }
+})
 
 module.exports = {
   UserModel: model('User', schema),
