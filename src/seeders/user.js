@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const { UserModel } = require('../models/user.model');
 require('dotenv').config();
@@ -21,7 +20,7 @@ const users = [
 
 module.exports = async function() {
   try {
-    const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS);
+    const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUNDS));
 
     await Promise.all(users.map(async user => user.password = await bcrypt.hash(user.password, salt)));
 
@@ -33,4 +32,4 @@ module.exports = async function() {
     console.log(error);
     process.exit(1);
   }
-}
+};
