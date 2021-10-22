@@ -21,7 +21,7 @@ const users = [
 
 module.exports = async function() {
   try {
-    const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS);
+    const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUNDS));
 
     await Promise.all(users.map(async user => user.password = await bcrypt.hash(user.password, salt)));
 
