@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "db:seed": "node src/seeders/index.js"
+    "db:seed": "node src/seeders/index.js",
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "validator": "^13.6.0"
   },
   "devDependencies": {
+    "eslint": "^8.0.1",
     "nodemon": "^2.0.14"
   }
 }

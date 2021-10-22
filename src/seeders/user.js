@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const { UserModel } = require('../models/user.model');
 require('dotenv').config();
@@ -33,4 +32,4 @@ module.exports = async function() {
     console.log(error);
     process.exit(1);
   }
-}
+};
